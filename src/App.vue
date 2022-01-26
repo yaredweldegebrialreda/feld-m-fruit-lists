@@ -26,7 +26,7 @@ export default {
 
   async created() {
     axios
-      .get("/all")
+      .get("https://www.fruityvice.com/api/fruit/all")
       .then((response) => {
         this.data = response.data;
         var headerData = response.data[0];
