@@ -1,7 +1,7 @@
 {
     "headers": [
       {
-        "source": "https://www.fruityvice.com/api/fruit/(.*)",
+        "source": "https://www.fruityvice.com/api/fruit",
         "headers": [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "*" },
