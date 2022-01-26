@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app class="container-background">
+    <v-container class="py-10">
+      <FruitsList
+        title="FeldM Fruit Nutritions"
+        :data="data"
+        :headers="headers"
+      />
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FruitsList from "./views/FruitsList.vue";
 
+import axios from "axios";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
-</script>
+    FruitsList,
+  },
+  data: () => ({
+    data: [],
+    headers: [],
+  }),
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  async created() {
+    axios
+      .get("/all")
+      .then((response) => {
+        this.data = response.data;
+        var headerData = response.data[0];
+        for (const item in headerData) {
+          this.headers.push({
+            text: item,
+            value: item,
+            class: "success--text text-capitalize",
+          });
+        }
+      })
+      .catch((e) => console.log(e));
+  },
+};
+</script>
+<style scoped>
+.container-background {
+  background: #f4f5f6 !important;
 }
 </style>
