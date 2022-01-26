@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="0" class="px-10">
+  <v-card elevation="0" class="px-md-10">
     <v-card-title>
       <Header :title="title" :searchText="searchText" :onSearch="onSearch" />
     </v-card-title>
